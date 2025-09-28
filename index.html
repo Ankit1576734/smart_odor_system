@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Odor Control System</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="p-4 md:p-8">
+
+    <div id="login-modal" class="fixed inset-0 z-50 flex items-center justify-center">
+        <div class="card w-full max-w-sm">
+            <h2 class="text-2xl font-bold text-center mb-6 text-white">System Login</h2>
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                    <input type="email" id="email" class="form-input" placeholder="abc@gmail.com" value="abc@gmail.com" required>
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="••••••••" value="0000" required>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+                <p id="login-status" class="text-center text-sm text-red-400 h-4"></p>
+            </form>
+        </div>
+    </div>
+    
+    <main id="dashboard" class="max-w-7xl mx-auto hidden">
+        <header class="relative text-center mb-8 border-b border-gray-700 pb-4">
+            <button id="logout-btn" class="absolute top-0 right-0 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                Logout
+            </button>
+            <h1 class="text-3xl md:text-4xl font-bold text-white">Smart Odor Control System</h1>
+            <p class="text-lg text-gray-400 mt-2">Real-time monitoring and automated air purification.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-1 card flex flex-col items-center justify-center text-center">
+                <h2 class="text-xl font-semibold mb-4 text-gray-200">Indoor Air Quality (IAQ)</h2>
+                <div id="status-indicator" class="w-32 h-32 rounded-full flex items-center justify-center status-fresh">
+                    <span id="status-text" class="text-2xl font-bold text-white">Fresh</span>
+                </div>
+                <div class="w-full mt-6">
+                    <div class="bg-gray-700 rounded-full h-4 overflow-hidden">
+                        <div id="iaq-gauge" class="bg-blue-500 h-4 rounded-full gauge-bar" style="width: 0%;"></div>
+                    </div>
+                    <p id="iaq-value" class="text-2xl font-bold mt-2">0</p>
+                </div>
+            </div>
+            <div class="lg:col-span-2 card">
+                <h2 class="text-xl font-semibold mb-6 text-gray-200">System Controls</h2>
+                <div class="flex items-center justify-between mb-6 pb-6 border-b border-gray-700">
+                    <span class="text-lg">Automatic Mode</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="auto-mode-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="mt-4">
+                    <button id="manual-spray-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center transition-colors">
+                        <span>Spray Now</span>
+                    </button>
+                    <p id="spray-status" class="text-center mt-3 text-gray-400 h-5"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6">
+            <div class="card">
+                <h2 class="text-xl font-semibold mb-4 text-gray-200">IAQ History (Live)</h2>
+                <div class="h-64">
+                    <canvas id="iaq-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            <div class="card text-center">
+                <h3 class="text-lg text-gray-400">Temperature</h3>
+                <p id="temp-value" class="text-3xl font-bold mt-2">-- °F</p>
+            </div>
+            <div class="card text-center">
+                <h3 class="text-lg text-gray-400">Humidity</h3>
+                <p id="humidity-value" class="text-3xl font-bold mt-2">-- %</p>
+            </div>
+            <div class="card text-center">
+                <h3 class="text-lg text-gray-400">Pressure</h3>
+                <p id="pressure-value" class="text-3xl font-bold mt-2">-- hPa</p>
+            </div>
+        </div>
+        
+        <footer class="text-center mt-8 text-gray-500">
+            <p>&copy; 2025 Smart Home Solutions.</p>
+        </footer>
+    </main>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+/* --- Tailwind CSS CDN --- */
+@import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+
+/* --- General Styles --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #111827;
+    color: #E5E7EB;
+}
+.card {
+    background-color: #1F2937;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* --- Login Modal Styles --- */
+#login-modal {
+    background-color: rgba(17, 24, 39, 0.9);
+    transition: opacity 0.3s ease-in-out;
+}
+.form-input {
+    background-color: #374151;
+    border: 1px solid #4B5563;
+    color: #E5E7EB;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-input:focus {
+    outline: none;
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 2px #1e40af;
+}
+.btn-primary {
+    background-color: #3B82F6;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+.btn-primary:hover {
+    background-color: #2563EB;
+}
+
+/* --- Dashboard Specific Styles --- */
+.status-indicator {
+    transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+.status-fresh { background-color: #10B981; box-shadow: 0 0 15px #10B981; }
+.status-moderate { background-color: #F59E0B; box-shadow: 0 0 15px #F59E0B; }
+.status-strong { background-color: #EF4444; box-shadow: 0 0 15px #EF4444; }
+
+.toggle-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #374151; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #3B82F6; }
+input:checked + .slider:before { transform: translateX(26px); }
+
+.gauge-bar { transition: width 0.5s ease-in-out; }
+
+.spraying-animation { animation: pulse 1.5s infinite; }
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
